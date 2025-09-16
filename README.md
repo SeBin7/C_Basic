@@ -8,6 +8,7 @@ Additionally, it includes a **Docker-based development environment** for reprodu
 ---
 
 ## Folder Structure
+- `00_practice/` : Practice examples
 - `01_basics/` : Basic syntax (variables, operators, functions, arrays, strings, structs, enums)
 - `02_system/` : Memory model, pointers, bit operations, compilation & linking
 - `03_optimization/` : Compiler flags, memory access patterns, loop optimizations, profiling
@@ -24,13 +25,13 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/) style:
 ```
 
 ### Types
-- `feat` â†’ new feature  
-- `fix` â†’ bug fix  
-- `docs` â†’ documentation only  
-- `style` â†’ formatting, code style only  
-- `refactor` â†’ code change that neither fixes a bug nor adds a feature  
-- `test` â†’ add or modify tests  
-- `chore` â†’ maintenance tasks (build, configs, deps)  
+- `feat` ¡æ new feature  
+- `fix` ¡æ bug fix  
+- `docs` ¡æ documentation only  
+- `style` ¡æ formatting, code style only  
+- `refactor` ¡æ code change that neither fixes a bug nor adds a feature  
+- `test` ¡æ add or modify tests  
+- `chore` ¡æ maintenance tasks (build, configs, deps)  
 
 
 ### Examples
@@ -53,16 +54,17 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/) style:
 
 ## Build Instructions (WSL/Ubuntu)
 ```bash
+# Install build tools
 sudo apt update && sudo apt install -y build-essential cmake ninja-build
 
+# Configure & build
 mkdir build && cd build
-cmake ..
+cmake .. -G Ninja
 cmake --build . -j
 ```
 
 ## Run executables:
 ```bash
-./basic_hello
 ./basic_array
 ./sys_pointer
 ./sys_bits
@@ -80,12 +82,22 @@ A reproducible dev environment is provided with **Dockerfile** and **docker-comp
 docker compose build
 ```
 
-### 2. Run container (mounts current repo into /workspace)
+### 2. Run container (one-time, interactive)
 ```bash
 docker compose run --rm dev
 ```
 
-### 3. Inside container, build & run
+### 3. Run container in background
+```bash
+docker compose up -d
+```
+
+### 4. Stop container
+```bash
+docker compose down
+```
+
+### 5. Inside container, build & run
 ```bash
 mkdir build && cd build
 cmake .. -G Ninja

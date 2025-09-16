@@ -1,0 +1,17 @@
+build/
+out/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+*.o
+*.obj
+*.out
+*.exe
+*.a
+*.so
+*.dylib
+.vs/
+.vscode/
+.git/
+.gitignore
+.DS_Store

@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  dev:
+    build: .
+    image: c_basic:dev
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    tty: true
+    stdin_open: true
+    command: bash -lc "gcc chapters/00_practice/src/*.c -I chapters/00_practice/include -o practice_00 && ./practice_00"
