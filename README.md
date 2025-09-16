@@ -24,13 +24,14 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/) style:
 ```
 
 ### Types
-- `feat` ¡æ new feature
-- `fix` ¡æ bug fix
-- `docs` ¡æ documentation only
-- `style` ¡æ formatting, code style only
-- `refactor` ¡æ code change that neither fixes a bug nor adds a feature
-- `test` ¡æ add or modify tests
-- `chore` ¡æ maintenance tasks (build, configs, deps)
+- `feat` â†’ new feature  
+- `fix` â†’ bug fix  
+- `docs` â†’ documentation only  
+- `style` â†’ formatting, code style only  
+- `refactor` â†’ code change that neither fixes a bug nor adds a feature  
+- `test` â†’ add or modify tests  
+- `chore` â†’ maintenance tasks (build, configs, deps)  
+
 
 ### Examples
 - `feat(basics): add hello world and array sum examples`
@@ -95,4 +96,5 @@ cmake --build . -j
 ### 4. Exit container
 ```bash
 exit
+
 ```
