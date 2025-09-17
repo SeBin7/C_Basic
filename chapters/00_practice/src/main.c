@@ -23,5 +23,23 @@ int main(void) {
     PRINT_EXAMPLE("4-9");
     sizeof_example();
 
+    PRINT_EXAMPLE("4-11");
+    comma_operator();
+
+    PRINT_EXAMPLE("4-12");
+    ternary_operator();
+
+    PRINT_EXAMPLE("4-13");
+    bit_operator();
+
+    PRINT_EXAMPLE("ifelse");
+    ifelse_example();
+
+    PRINT_EXAMPLE("switch");
+    switch_example();
+
+    PRINT_EXAMPLE("for");
+    for_example();
+
     return 0;
 }
