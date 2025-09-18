@@ -1,11 +1,41 @@
-version: "3.8"
+version: "3.9"
+
 services:
-  dev:
-    build: .
-    image: c_basic:dev
+  build:
+    image: ubuntu:22.04
+    container_name: c_build
     working_dir: /workspace
     volumes:
       - ./:/workspace
     tty: true
-    stdin_open: true
-    command: bash -lc "gcc chapters/00_practice/src/*.c -I chapters/00_practice/include -o practice_00 && ./practice_00"
+    command: >
+      bash -lc "
+        apt-get update &&
+        apt-get install -y build-essential cmake ninja-build &&
+        rm -rf build &&
+        mkdir build && cd build &&
+        cmake .. -G Ninja &&
+        cmake --build . -j "
+     
+
+  run_practice:
+    image: ubuntu:22.04
+    container_name: run_practice
+    working_dir: /workspace/build/chapters/00_practice
+    volumes:
+      - ./:/workspace
+    depends_on:
+      - build
+    tty: true
+    command: ./practice
+
+  run_basics:
+    image: ubuntu:22.04
+    container_name: run_basics
+    working_dir: /workspace/build/chapters/01_basics
+    volumes:
+      - ./:/workspace
+    depends_on:
+      - build
+    tty: true
+    command: ./basics
