@@ -8,10 +8,10 @@ void division_remainder(void);
 void pre_post_example(void);
 void short_circuit(void);
 void sizeof_example(void);
-void comma_operator(void);
-void ternary_operator(void);
-void bit_operator(void);
-void ifelse_example(void);
-void switch_example(void);
-void for_example(void);
+void pointer_basic_example(void);
+void pointer_address_size_example(void);
+void pointer_example2(void);
+void pointer_array_example(void);
+void pointer_example2(void);
+
 #endif

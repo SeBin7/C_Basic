@@ -23,23 +23,19 @@ int main(void) {
     PRINT_EXAMPLE("4-9");
     sizeof_example();
 
-    PRINT_EXAMPLE("4-11");
-    comma_operator();
+    PRINT_EXAMPLE("9-2");
+    pointer_basic_example();
 
-    PRINT_EXAMPLE("4-12");
-    ternary_operator();
+    PRINT_EXAMPLE("9-5");
+    pointer_address_size_example();
 
-    PRINT_EXAMPLE("4-13");
-    bit_operator();
+    PRINT_EXAMPLE("9-7");
+    pointer_example2();
 
-    PRINT_EXAMPLE("ifelse");
-    ifelse_example();
+    PRINT_EXAMPLE("10-3");
+    pointer_array_example();
 
-    PRINT_EXAMPLE("switch");
-    switch_example();
-
-    PRINT_EXAMPLE("for");
-    for_example();
-
+    PRINT_EXAMPLE("10-5");
+    pointer_example2();
     return 0;
 }

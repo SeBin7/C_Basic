@@ -14,19 +14,19 @@ void integer_types(void) {
 }
 
 void unsigned_overflow(void) {
-    unsigned int a = 4294967295; 
+    unsigned int a = 4294967295; // UINT_MAX (32-bit 기준)
     printf("a = %u\n", a);
 
-    a = a + 1;  
+    a = a + 1;  // overflow 발생 → 0으로 wrap-around
     printf("a+1 = %u\n", a);
 
-    a = a - 1;  
+    a = a - 1;  // 다시 최대값으로 wrap-around
     printf("a-1 = %u\n", a);
 }
 
 void floating_precision(void) {
-    float ft = 1.234567890123456789;      
-    double db = 1.234567890123456789;     
+    float ft = 1.234567890123456789;      // float: 약 7자리 정밀도
+    double db = 1.234567890123456789;     // double: 약 15~16자리 정밀도
 
     printf("float형 변수의 값   : %.20f\n", ft);
     printf("double형 변수의 값  : %.20lf\n", db);
@@ -78,147 +78,83 @@ void sizeof_example(void) {
     printf("char 자료형의 크기 : %d\n", (int)sizeof(char));
 }
 
-void comma_operator(void) {
+void pointer_basic_example(void) {
+    int a, b;
+    int* pa, *pb;
+
+    pa = &a;
+    *pa = 10;
+
+
+    printf("포인터로 a 값 출력 : %d\n", *pa);
+    printf("변수명로 a 값 출력 : %d\n", a);
+}
+
+void pointer_address_size_example(void) {
+    char ch;
+    int in;
+    double db;
+
+    char* pc = &ch;
+    int* pi = &in;
+    double* pd = &db;
+
+    printf("char형 변수의 주소 크기 : %d\n", (int)sizeof(&ch));
+    printf("int형 변수의 주소 크기 : %d\n", (int)sizeof(&in));
+    printf("double형 변수의 주소 크기 : %d\n", (int)sizeof(&db));
+
+    printf("char * 포인터의 주소 크기 : %d\n", (int)sizeof(pc));
+    printf("int * 포인터의 주소 크기 : %d\n", (int)sizeof(pi));
+    printf("double * 포인터의 주소 크기 : %d\n", (int)sizeof(pd));
+
+    printf("char * 포인터가 가르키는 변수의 크기 : %d\n", (int)sizeof(*pc));
+    printf("int * 포인터가 가르키는 변수 크기 : %d\n", (int)sizeof(*pi));
+    printf("double * 포인터가 가르키는 변수 크기 : %d\n", (int)sizeof(*pd));
+}
+void swap(int* pa, int* pb);
+
+void pointer_example2(void) {
     int a = 10, b = 20;
-    int res;
 
-    res = (++a, ++b);
-
+    swap(&a, &b);
     printf("a:%d, b:%d\n", a, b);
-    printf("res:%d", res);
- }
-
-void ternary_operator(void) {
-    int a = 10, b = 20;
-    int res;
-
-    res = (a > b) ? a : b;
-
-    printf("큰 값:%d\n", res);
-}
-
-void bit_operator(void) {
-    int a = 10;
-    int b = 12;
-
-    printf("a & b : %d\n", a & b);
-    printf("a ^ b : %d\n", a ^ b);
-    printf("a | b : %d\n", a | b);
-    printf("~a : %d\n", ~a);
-    printf("a << 1 : %d\n", a << 1);
-    printf("a >> 2 : %d\n", a >> 2);
 
 }
 
-void ifelse_example(void) {
-    int a = 0, b = 0;
+void swap(int* pa, int* pb) {
+    int temp;
 
-    if (a > 0) {
-        b = 1;
-    }
-    else if (a == 0) {
-        b = 2;
-    }
-    else {
-        b = 3;
-    }
-
-    printf("b : %d\n", b);
-
- }
-
-void switch_example(void) {
-    int rank = 2, m = 0;
-
-    switch (rank) {
-    case 1:
-        m = 300;
-        break;
-    case 2:
-        m = 200;
-        break;
-    case 3:
-        m = 100;
-        break;
-    default:
-        m = 10;
-        break;
-    }
+    temp = *pa;
+    *pa = *pb;
+    *pb = temp;
 }
 
-void for_example(void) {
-    int Line, i, j, k, x;
-    //printf("정수 입력: ");
-    //scanf("%d", &Line);
-    Line = 5;
-    for (i = 0; i < Line; i++) {
-        x = Line - i;
-        for (j = 0; j < i; j++) printf(" ");
-        for (k = 0; k < x; k++) printf("*");
-        printf("\n");
+void pointer_array_example(void) {
+    int ary[3] = { 10, 20, 30 };
+    int* pa = ary;
+    int i;
+
+    printf("배열의 값 : ");
+    for (i = 0; i < 3; i++) {
+        printf("%d ", *pa);
+        pa++;
     }
-    printf("---------------\n");
-    for (i = 0; i < Line + 1; i++) {
-        x = Line - i;
-        for (j = 0; j < i; j++) printf("*");
-        for (k = 0; k < x; k++) printf(" ");
-        printf("\n");
-    }
-    printf("---------------\n");
-    for (i = 0; i < Line + 1; i++) {
-        x = Line - i;
-        for (j = 0; j < x; j++) printf("*");
-        for (k = 0; k < i; k++) printf(" ");
-        printf("\n");
-    }
-    printf("---------------\n");
-    for (i = 0; i < Line + 1; i++) {
-        x = Line - i;
-        for (j = 0; j < x; j++) printf(" ");
-        for (k = 0; k < i; k++) printf("*");
-        printf("\n");
-    }
-    printf("---------------\n");
-    for (i = 0; i < Line; i++) {
-        x = Line - i;
-        if (i < 3) {
-            for (j = 3; j < x; j++) printf(" ");
-            for (k = 0; k < i; k++) printf("*");
-            for (j = 0; j < i + 1; j++) printf("*");
-            for (k = 0; k < x; k++) printf(" ");
-            printf("\n");
-        }        
-    }
-    printf("---------------\n");
-    for (i = 0; i < Line + 1; i++) {
-        x = Line - i;
-        if (i < 3) {
-            for (j = 0; j < i; j++) printf(" ");
-            for (k = 0; k < x-3; k++) printf("*");
-            for (j = 0; j < x-2; j++) printf("*");
-            for (k = 0; k < i; k++) printf(" ");
-            printf("\n");
-        }
-    }
-    printf("---------------\n");
-    for (i = 0; i < Line; i++) {
-        x = Line - i;
-        if (i < 2) {
-            for (j = 3; j < x; j++) printf(" ");
-            for (k = 0; k < i; k++) printf("*");
-            for (j = 0; j < i + 1; j++) printf("*");
-            for (k = 0; k < x; k++) printf(" ");
-            printf("\n");
-        }
-    }
-    for (i = 0; i < Line; i++) {
-        x = Line - i;
-        if (i < 3) {
-            for (j = 0; j < i; j++) printf(" ");
-            for (k = 0; k < x - 3; k++) printf("*");
-            for (j = 0; j < x - 2; j++) printf("*");
-            for (k = 0; k < i; k++) printf(" ");
-            printf("\n");
-        }
-    }
+
+    return 0;
+}
+
+void pointer_example2(void) {
+    int ary[5] = { 10, 20, 30, 40, 50 };
+    int* pa = ary;
+    int* pb = pa + 3;
+
+    printf("pa : %u\n", pa);
+    printf("pb : %u\n", pb);
+
+    pa++;
+    printf("pb - pa : %u\n", pb - pa);
+
+    printf("앞에 있는 배열 요소의 값 출력 : ");
+    if (pa < pb) printfA("%d\n", *pa);
+    else printf("%d\n", *pb);
 }
