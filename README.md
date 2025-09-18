@@ -65,48 +65,33 @@ cmake --build . -j
 
 ## Run executables:
 ```bash
-./basic_array
-./sys_pointer
-./sys_bits
-./opt_loop
-./par_thread
+./practice      # from 00_practice
+./basics        # from 01_basics
 ```
 
 ---
 
 ## Docker Development Environment
-A reproducible dev environment is provided with **Dockerfile** and **docker-compose.yml**.
+A reproducible dev environment is provided with **docker-compose.yml**.
 
-### 1. Build image
+### Run 00_practice
 ```bash
-docker compose build
+docker compose up run_practice
 ```
 
-### 2. Run container (one-time, interactive)
+### Run 01_basics
 ```bash
-docker compose run --rm dev
+docker compose up run_basics
 ```
 
-### 3. Run container in background
-```bash
-docker compose up -d
-```
 
-### 4. Stop container
+### Stop container
 ```bash
 docker compose down
 ```
 
-### 5. Inside container, build & run
-```bash
-mkdir build && cd build
-cmake .. -G Ninja
-cmake --build . -j
-./basic_hello
-```
 
-### 4. Exit container
+### Exit container
 ```bash
 exit
-
 ```
