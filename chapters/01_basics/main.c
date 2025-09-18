@@ -50,6 +50,45 @@ int main(void) {
     compare_demo();
     snprintf_format_demo();
 
+    /* Functions section */ 
+    int v = 5;
+    pass_by_value(v);
+    printf("[caller] after pass_by_value: v=%d\n\n", v);
+
+    pass_by_pointer(&v);
+    printf("[caller] after pass_by_pointer: v=%d\n\n", v);
+
+    int a = 1, b = 2;
+    swap_via_pointer(&a, &b);
+    printf("[caller] after swap_via_pointer: a=%d, b=%d\n\n", a, b);
+
+    struct Pair p = return_struct_demo(10, 20);
+    printf("[caller] return_struct_demo => (%d, %d)\n\n", p.a, p.b);
+
+    int buf[6];
+    fill_sequence(buf, 6, 100);
+    size_t s = sum_const_array(buf, 6);
+    printf("[caller] sum of buf = %zu\n\n", s);
+
+    apply_op(add, 10, 3);
+    apply_op(sub, 10, 3);
+
+    printf("factorial_recursive(5)=%d, factorial_iterative(5)=%d\n\n",
+        factorial_recursive(5), factorial_iterative(5));
+
+    printf("max2(7, 12)=%d\n\n", max2(7, 12));
+
+    /* Structs & Enums section */ 
+    enum_demo();
+    flags_demo();
+    struct_layout_demo();
+    bitfield_demo();
+    packed_struct_demo();
+    tagged_union_demo();
+    pass_struct_by_value_demo();
+    designated_init_demo();
+
+
     puts("=== done ===");
 
     return 0;
