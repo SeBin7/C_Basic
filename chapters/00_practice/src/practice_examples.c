@@ -143,18 +143,96 @@ void pointer_array_example(void) {
     return 0;
 }
 
-void pointer_example2(void) {
+//void pointer_example3(void) {
+//    int ary[5] = { 10, 20, 30, 40, 50 };
+//    int* pa = ary;
+//    int* pb = pa + 3;
+//
+//    printf("pa : %u\n", pa);
+//    printf("pb : %u\n", pb);
+//
+//    pa++;
+//    printf("pb - pa : %u\n", pb - pa);
+//
+//    printf("앞에 있는 배열 요소의 값 출력 : ");
+//    if (pa < pb) printfA("%d\n", *pa);
+//    else printf("%d\n", *pb);
+//}
+//
+//void pointer_example4() {
+//    // char, short, int, double
+//
+//    char  numbers[5] = { 0,1,2,3,4 }, * nptr = numbers;
+//
+//    char  tempp, * ptempp;
+//
+//    ptempp = nptr++;
+//
+//    tempp = *nptr++;
+//
+//    tempp = (*nptr)++;
+//
+//    tempp = *(nptr++);
+//
+//    tempp = nptr - numbers;
+//
+//
+//    getchar();
+//}
+
+void pointer_example6(void) {
     int ary[5] = { 10, 20, 30, 40, 50 };
-    int* pa = ary;
-    int* pb = pa + 3;
 
-    printf("pa : %u\n", pa);
-    printf("pb : %u\n", pb);
+    print_ary(ary);
 
-    pa++;
-    printf("pb - pa : %u\n", pb - pa);
+    return 0;
+}
 
-    printf("앞에 있는 배열 요소의 값 출력 : ");
-    if (pa < pb) printfA("%d\n", *pa);
-    else printf("%d\n", *pb);
+void print_ary(int* pa) {
+    int i;
+    
+    for (i = 0; i < 5; i++) {
+        printf("%d ", pa[i]);
+    }
+}
+
+void buffer_clear_example(void) {
+    int num, grade;
+
+    printf("학번 입력: ");
+    scanf("%d", &num);
+    getchar();
+    printf("학점 입력: ");
+    grade = getchar();
+    printf("학번 : %d, 학점 : %c", num, grade);
+
+}
+
+void fgets_exmaple(void) {
+    char str[80];
+
+    printf("공백이 포함된 문자열 입력 : ");
+    fgets(str, sizeof(str), stdin);
+
+    printf("입력된 문자열은 %s입니다.\n", str);
+}
+
+void swap_ptr(char** ppa, char** ppb);
+
+void pointer_example7(void) {
+    char* pa = "success";
+    char* pb = "failure";
+
+    printf("pa -> %s, pb -> %s\n", pa, pb);
+    swap_ptr(&pa, &pb);
+    printf("pa -> %s, pb -> %s\n", pa, pb);
+
+}
+
+void swap_ptr(char** ppa, char** ppb) {
+    char* pt;
+    
+    pt = *ppa;
+    *ppa = *ppb;
+    *ppb = pt;
 }

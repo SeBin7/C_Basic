@@ -32,10 +32,17 @@ int main(void) {
     PRINT_EXAMPLE("9-7");
     pointer_example2();
 
-    PRINT_EXAMPLE("10-3");
-    pointer_array_example();
+    //PRINT_EXAMPLE("10-3");
+    //pointer_array_example();
 
-    PRINT_EXAMPLE("10-5");
-    pointer_example2();
+    //PRINT_EXAMPLE("10-5");
+    //pointer_example3();
+
+    //PRINT_EXAMPLE("10-5");
+    //pointer_example6();
+
+    //PRINT_EXAMPLE("11-7");
+    //buffer_clear_example();
+
     return 0;
 }
